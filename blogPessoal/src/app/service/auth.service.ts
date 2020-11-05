@@ -16,6 +16,6 @@ export class AuthService {
   }
 
   cadastrar(user: User){
-    return this.http.post('http://localhost:8080/usuarios/logar', user)
+    return this.http.post('http://localhost:8080/usuarios/cadastrar', user)
   }
 }
