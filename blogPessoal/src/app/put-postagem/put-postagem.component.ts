@@ -63,8 +63,8 @@ export class PutPostagemComponent implements OnInit {
     
   }
 
-  findByIdTema(){
-    this.temaService.getByIdTema(this.idTema).subscribe((resp: Tema) => {
+  findByIdTema(id: number){
+    this.temaService.getByIdTema(id).subscribe((resp: Tema) => {
       this.tema = resp;})
   }
 
