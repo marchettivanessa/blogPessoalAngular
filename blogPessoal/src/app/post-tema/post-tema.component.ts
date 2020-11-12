@@ -23,13 +23,15 @@ export class PostTemaComponent implements OnInit {
   }
 
   findAllTemas(){
-    this.temaService.getAllTemas().subscribe((resp: Tema[]) =>{this.listaTemas = resp
+    this.temaService.getAllTemas().subscribe((resp: Tema[]) =>{
+      this.listaTemas = resp;
     })
     
  }
 
  findByIdTema(){
-  this.temaService.getByIdTema(this.tema.id).subscribe((resp: Tema) => {this.tema = resp;})
+  this.temaService.getByIdTema(this.tema.id).subscribe((resp: Tema) => {
+    this.tema = resp;})
 }
 
 cadastrar(){

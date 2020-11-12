@@ -19,7 +19,7 @@ export class TemaService {
 
 
   getByIdTema(id: number){
-    return this.http.get(`hhtp://localhost:8080/tema/&{id}`, this.token)
+    return this.http.get(`hhtp://localhost:8080/tema/${id}`, this.token)
   }
 
   postTema(tema: Tema){

@@ -16,9 +16,9 @@ export class FeedComponent implements OnInit {
   postagem: Postagem = new Postagem()
   listaPostagens:Postagem[]
 
-  tema: Tema = new Tema()
-  listaTemas: Tema[]
-  idTema: number
+  tema: Tema = new Tema();
+  listaTemas: Tema[];
+  idTema: number;
 
   constructor(
     private postagemService: PostagemService,
@@ -34,10 +34,17 @@ export class FeedComponent implements OnInit {
   }
 
   findAllPostagens(){
-    return this.postagemService.getAllPostagens().subscribe((resp: Postagem[]) => {this.listaPostagens = resp
+    return this.postagemService.getAllPostagens().subscribe((resp: Postagem[]) => {
+      this.listaPostagens = resp;
     })
   }
 
+  findAllTemas(){
+    this.temaService.getAllTemas().subscribe((resp: Tema[]) =>{
+      this.listaTemas = resp
+    })
+    
+  }
 
   publicar(){
     this.tema.id = this.idTema
@@ -47,18 +54,12 @@ export class FeedComponent implements OnInit {
       alert('Preencha todos os campos antes de publicar!')
     } else{
       this.postagemService.postPostagem(this.postagem).subscribe((resp: Postagem) =>{
-        this.postagem = resp
-        this.postagem = new Postagem()
-        alert('Postagem realizada com sucesso!')
-        this.findAllPostagens //lista todas as postagens após a publicação
+        this.postagem = resp;
+        this.postagem = new Postagem();
+        alert('Postagem realizada com sucesso!');
+        this.findAllPostagens; //lista todas as postagens após a publicação
       })
     }
-  }
-
-  findAllTemas(){
-    this.temaService.getAllTemas().subscribe((resp: Tema[]) =>{this.listaTemas = resp
-    })
-    
   }
 
   findByIdTema(){

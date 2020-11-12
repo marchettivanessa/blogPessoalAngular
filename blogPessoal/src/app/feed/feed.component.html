@@ -21,7 +21,7 @@
                     <div class="form-group ">
                         <label class="text-monospace" for="tema">Escolha um tema ou <a routerLink="/cadastro-tema">Cadastre um novo</a></label>
                         <select name="tema" id="tema" class="form-control" [(ngModel)] = 'idTema' (change) = 'findByIdTema()'>
-                            <option *ngFor = 'let item of listaTemas' value {{item.id}}>
+                            <option *ngFor = 'let item of listaTemas' value ='{{item.id}}'>
                                 {{item.descricao}}
                             </option>
                         </select>
@@ -62,7 +62,7 @@
                 
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="card mt-5" *ngFor = 'let item of listaPostagens | orderBy: key: reverse'>
+                            <div class="card mt-5" *ngFor = "let item of listaPostagens | orderBy: key: reverse">
                                 <div class="card-header">
                                     <div class="row d-flex align-items-center">
                                         <div class="col-md-8">
@@ -70,11 +70,12 @@
                                             <small>Tema:{{item.tema.descricao}}</small>
                                         </div>
                                         <div class="col-md-4 d-flex justify-content-end">
-                                            <button class="mr-3 btn btn-outline-info">
+                                            <button class="mr-3 btn btn-outline-info"
+                                            [routerLink]="['/edita-post', item.id]">
                                                 Editar
                                             </button>
 
-                                            <button class="btn btn-outline-danger ml-3">
+                                            <button class="btn btn-outline-danger ml-3" [routerLink]="['/delete-post', item.id]">
                                                 Apagar
                                             </button>
 
