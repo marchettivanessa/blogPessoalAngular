@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Tema } from '../model/Tema';
+import { AlertasService } from '../service/alertas.service';
 import { TemaService } from '../service/tema.service';
 
 @Component({
@@ -15,7 +16,8 @@ tema: Tema = new Tema()
   constructor(
     private temaService: TemaService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private alert: AlertasService
   ) { }
 
   ngOnInit() {
@@ -25,8 +27,8 @@ tema: Tema = new Tema()
     this.findByIdTema(id);
   }
 
-  findByIdTema(){
-    this.temaService.getByIdTema(this.idTema).subscribe((resp: Tema) => {
+  findByIdTema(id: number){
+    this.temaService.getByIdTema(id).subscribe((resp: Tema) => {
       this.tema = resp;})
   }
 
@@ -34,7 +36,7 @@ tema: Tema = new Tema()
     this.temaService.putTema(this.tema).subscribe((resp: Tema) =>{
       this.tema = resp
       this.router.navigate(['/cadastro-tema'])
-      alert('Tema atualizado com sucesso!')
+      this.alert.showAlertSuccess('Tema atualizado com sucesso!')
     })
   }
 
