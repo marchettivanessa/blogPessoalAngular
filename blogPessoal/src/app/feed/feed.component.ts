@@ -72,7 +72,7 @@ export class FeedComponent implements OnInit {
   }
 
   findByTituloPostagem(){
-    if(this.titulo == ""){
+    if(this.titulo === ""){
       this.findAllPostagens()
     } else{
       this.postagemService.getByTitutloPostagem(this.titulo).subscribe((resp: Postagem[]) =>{
@@ -82,7 +82,7 @@ export class FeedComponent implements OnInit {
   }
 
   findByNomeTema(){
-    if(this.nomeTema == ''){
+    if(this.nomeTema ===''){
       this.findAllTemas()
     } else{
       this.temaService.getByNomeTema(this.nomeTema).subscribe((resp: Tema[]) => {

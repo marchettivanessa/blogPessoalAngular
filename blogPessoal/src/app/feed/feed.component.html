@@ -111,24 +111,13 @@
                 
                 <!--POSTAGENS APARECEM NA ABA DE PESQUISA POR TEMA-->
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="card mt-5 mb-5" *ngFor = "let item of listaTemas | orderBy: key: reverse">
-                            <div *ngFor = 'let post of item.postagem'>
+                    <div class="col-md-12" *ngFor = "let item of listaTemas | orderBy: key: reverse">
+                        <div *ngFor = 'let post of item.postagem'>
+                            <div class="card mt-5 mb-5">                            
                                 <div class="card-header">
                                     <div class="row d-flex align-items-center">
-                                        <div class="col-md-8">
+                                        <div class="col-md-12">
                                             <h5 class="card-title">{{post.titulo}}</h5>
-                                        </div>
-                                        <div class="col-md-4 d-flex justify-content-end">
-                                            <button class="mr-3 btn btn-outline-info"
-                                            [routerLink]="['/edita-post', item.id]">
-                                                Editar
-                                            </button>
-    
-                                            <button class="btn btn-outline-danger ml-3" [routerLink]="['/delete-post', item.id]">
-                                                Apagar
-                                            </button>
-    
                                         </div>
                                     </div>
                                 </div>
